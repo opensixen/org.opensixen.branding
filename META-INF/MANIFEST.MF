@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Branding
+Bundle-SymbolicName: org.opensixen.branding;singleton:=true
+Bundle-Version: 1.0.0.qualifier
+Require-Bundle: org.opensixen.client;bundle-version="1.0.0",
+ org.opensixen.base;bundle-version="1.0.0"
+Bundle-Vendor: Fundesle
+Export-Package: org.opensixen.branding

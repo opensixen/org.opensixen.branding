@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         id="org.opensixen.branding.ResourceFinder"
+         point="org.opensixen.osgi.interfaces.IResourceFinder">
+      <client
+            class="org.opensixen.branding.ResourceFinder">
+      </client>
+   </extension>
+
+</plugin>
