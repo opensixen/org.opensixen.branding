@@ -14,6 +14,15 @@ import org.opensixen.osgi.interfaces.IResourceFinder;
 
 public class ResourceFinder implements IResourceFinder {
 
+	/** Directorio fuente donde encontrar los recursos en modo migracion	*/
+	private String sourceDir = "/home/harlock/workspace/workspace-opensixen-born//client/src/org/compiere/";
+
+	/** Directorio donde se copiaran	*/
+	private String targetDir = "/home/harlock//workspace/workspace-opensixen-born/org.opensixen.branding/";
+	
+	/** Modo migracion	*/
+	private boolean migrationMode = false;
+	
 	public ResourceFinder() {
 		// TODO Auto-generated constructor stub
 	}
@@ -22,29 +31,32 @@ public class ResourceFinder implements IResourceFinder {
 	public URL getResource(String name) {
 		URL url = getClass().getResource("/" + name);
 	
-		if (url == null)	{
-			copy(name);					
+		// Si no existe el recurso y estamos en modo migracion
+		if (url == null && migrationMode)	{
+			migrate(name);					
 		}
 				
 		url = getClass().getResource("/" + name);
 		return url;
 	}
 	
-	private void copy (String name)	{
+	/**
+	 * Copia las imagenes del directorio fuente al destino
+	 * Util para nuevos paquetes de brandig, para no tener que buscar
+	 * las imagenes una a una. 
+	 * @param name
+	 */
+	private void migrate (String name)	{
 		try{
-			File f1 = new File("/home/harlock/workspace/workspace-opensixen-born//client/src/org/compiere/" + name);
+			File f1 = new File( sourceDir + name);
 			
 			if (!f1.exists())	{
 				return;
 			}
-			File f2 = new File("/home/harlock//workspace/workspace-opensixen-born/org.opensixen.branding/"+name);
+			File f2 = new File(targetDir +name);
 			
 		      InputStream in = new FileInputStream(f1);
 		      
-		      //For Append the file.
-//		      OutputStream out = new FileOutputStream(f2,true);
-
-		      //For Overwrite the file.
 		      OutputStream out = new FileOutputStream(f2);
 
 		      byte[] buf = new byte[1024];
