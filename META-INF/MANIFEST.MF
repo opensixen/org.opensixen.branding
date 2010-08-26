@@ -7,3 +7,4 @@ Require-Bundle: org.opensixen.client;bundle-version="1.0.0",
  org.opensixen.base;bundle-version="1.0.0"
 Bundle-Vendor: Fundesle
 Export-Package: org.opensixen.branding
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
